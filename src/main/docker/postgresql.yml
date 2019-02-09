@@ -1,0 +1,11 @@
+version: '2'
+services:
+    ravikumargujjula-postgresql:
+        image: postgres:10.4
+        # volumes:
+        #     - ~/volumes/jhipster/RavikumarGujjula/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=RavikumarGujjula
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432
