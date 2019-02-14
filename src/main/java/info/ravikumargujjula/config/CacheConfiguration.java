@@ -43,7 +43,7 @@ public class CacheConfiguration {
             cm.createCache(info.ravikumargujjula.domain.Entry.class.getName() + ".tags", jcacheConfiguration);
             cm.createCache(info.ravikumargujjula.domain.Tag.class.getName(), jcacheConfiguration);
             cm.createCache(info.ravikumargujjula.domain.Tag.class.getName() + ".entries", jcacheConfiguration);
-            
+            // jhipster-needle-ehcache-add-entry
         };
     }
 }

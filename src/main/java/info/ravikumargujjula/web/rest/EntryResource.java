@@ -3,7 +3,6 @@ package info.ravikumargujjula.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import info.ravikumargujjula.domain.Entry;
 import info.ravikumargujjula.repository.EntryRepository;
-import info.ravikumargujjula.security.SecurityUtils;
 import info.ravikumargujjula.web.rest.errors.BadRequestAlertException;
 import info.ravikumargujjula.web.rest.util.HeaderUtil;
 import info.ravikumargujjula.web.rest.util.PaginationUtil;
@@ -98,9 +97,7 @@ public class EntryResource {
         if (eagerload) {
             page = entryRepository.findAllWithEagerRelationships(pageable);
         } else {
-//            page = entryRepository.findAll(pageable);
-        	
-        	page = entryRepository.findByBlogUserLoginOrderByDateDesc(SecurityUtils.getCurrentUserLogin().orElse(null), pageable);
+            page = entryRepository.findAll(pageable);
         }
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, String.format("/api/entries?eagerload=%b", eagerload));
         return ResponseEntity.ok().headers(headers).body(page.getContent());
